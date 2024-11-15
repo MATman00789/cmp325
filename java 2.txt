@@ -1,0 +1,26 @@
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+public class PalindromeTest {
+
+    public boolean isPalindrome(String str) {
+        if (str == null || str.length() == 0) return true;
+        int left = 0, right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    @Test
+    public void testPalindrome() {
+        assertTrue(isPalindrome("madam"));
+        assertTrue(isPalindrome("racecar"));
+        assertFalse(isPalindrome("hello"));
+        assertTrue(isPalindrome("A man a plan a canal Panama".replaceAll("\\s+", "").toLowerCase()));
+    }
+}
